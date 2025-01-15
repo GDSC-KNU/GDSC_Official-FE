@@ -23,17 +23,17 @@ const handleItemClick =
   };
 
 const commonDropdownItems = (
-  closeDropdown: (() => void) | undefined,
+  // closeDropdown: (() => void) | undefined,
   additionalItems: React.ReactNode
 ) => (
   <>
-    <DropdownItem onClick={handleItemClick(closeDropdown)}>
+    {/* <DropdownItem onClick={handleItemClick(closeDropdown)}>
       <NavLink to='/mypage'>
         <ResponsiveText size='sm' color='black'>
           마이페이지
         </ResponsiveText>
       </NavLink>
-    </DropdownItem>
+    </DropdownItem> */}
     {additionalItems}
     <DropdownItem onClick={handleLogout}>
       <ResponsiveText size='sm' color='black'>
@@ -88,7 +88,7 @@ export const renderDropdownItems = (
       return null;
   }
 
-  return commonDropdownItems(closeDropdown, additionalItems);
+  return commonDropdownItems(additionalItems);
 };
 
 const ResponsiveText = styled(Text)`

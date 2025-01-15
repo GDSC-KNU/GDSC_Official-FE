@@ -35,7 +35,7 @@ const ApplyFormPage = lazy(() => import('@gdg/pages/apply/ApplyFormPage'));
 const ApplyExPage = lazy(() => import('@gdg/pages/apply/ApplyExPage'));
 const InquiryPage = lazy(() => import('@gdg/pages/apply/InquiryPage'));
 const IntroducePage = lazy(() => import('@gdg/pages/introduce/IntroducePage'));
-const MyPage = lazy(() => import('@gdg/pages/mypage/MyPage'));
+// const MyPage = lazy(() => import('@gdg/pages/mypage/MyPage'));
 const AuthCallBackPage = lazy(
   () => import('@gdg/pages/signin/AuthCallBackPage')
 );
@@ -108,16 +108,16 @@ const routesConfig: AppRouteObject[] = [
           },
         ],
       },
-      {
-        path: 'mypage',
-        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
-        children: [
-          {
-            path: '',
-            element: <MyPage />,
-          },
-        ],
-      },
+      // {
+      //   path: 'mypage',
+      //   element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+      //   children: [
+      //     {
+      //       path: '',
+      //       element: <MyPage />,
+      //     },
+      //   ],
+      // },
       {
         path: 'team',
         element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
