@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { usePatchDocsMemo } from '@gdg/apis/hooks/admin/docs/usePatchDocsMemo';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
@@ -52,6 +53,7 @@ const Memo = ({
   version: number;
   note: string | null;
 }) => {
+  const queryClient = useQueryClient();
   const [memo, setMemo] = useState<IMemo | null>(
     note !== null ? { note: note, version: version } : null
   );
@@ -70,11 +72,13 @@ const Memo = ({
         { id, memo },
         {
           onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['docs'] });
+            queryClient.invalidateQueries({ queryKey: ['memo', id] });
             alert('메모가 성공적으로 저장되었습니다.');
           },
           onError: (error) => {
             console.error('API 호출 실패:', error);
-            alert('메모 저장에 실패했습니다.');
+            alert(error.message);
           },
         }
       );

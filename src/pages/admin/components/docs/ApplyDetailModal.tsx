@@ -96,7 +96,7 @@ const ApplyDetailModal = ({
 }) => {
   const [detail, setDetail] = useState<DetailInfo | null>(null);
 
-  const { data, isPending } = useGetDocsDetail(id);
+  const { data, isPending, refetch } = useGetDocsDetail(id);
   useEffect(() => {
     if (data) {
       setDetail(data);
@@ -145,7 +145,10 @@ const ApplyDetailModal = ({
   const trackData = detail ? getQuestionsByTrack(detail.track) : null;
   const emptyAnswer = '해당 질문에 대한 답변이 작성되지 않았습니다.';
 
-  console.log(detail);
+  const handleClose = () => {
+    refetch(); // 모달 닫을 때 최신 데이터 가져오기
+    onClose();
+  };
 
   return (
     <ModalBackdrop>
@@ -157,7 +160,7 @@ const ApplyDetailModal = ({
               <Text size='xl' weight='bold' color='black'>
                 지원자 정보 조회
               </Text>
-              <CloseBtn onClick={onClose}>
+              <CloseBtn onClick={handleClose}>
                 <CloseIconImg src={CloseIcon} alt='close' />
               </CloseBtn>
             </TitleWrapper>
