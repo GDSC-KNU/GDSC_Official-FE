@@ -78,5 +78,24 @@ export interface blogPostInterface {
   status: 'TEMPORAL' | 'SAVED';
 }
 
+export interface blogPostMetaDataInterface {
+  id: number;
+  title: string;
+  summary: string;
+  thumbnailUrl: string;
+  category: string;
+  createdAt: string;
+  likeCount: number;
+  commentCount: number;
+  sharedCount: number;
+}
+
+export interface blogPostListInterface {
+  data: blogPostMetaDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';
